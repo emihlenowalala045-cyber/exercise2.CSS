@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>My Image Gallery</h1>
+    <p>Filter by category</p>
+  </header>
+
+  <!-- FILTER BUTTONS - Flexbox -->
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="landscape">Landscapes</button>
+    <button class="filter-btn" data-filter="portrait">Portraits</button>
+    <button class="filter-btn" data-filter="architecture">Architecture</button>
+  </div>
+
+  <!-- GALLERY GRID - CSS Grid -->
+  <main class="gallery">
+
+    <!-- LANDSCAPES -->
+    <article class="card" data-category="landscape">
+      <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Mountain">
+      <div class="card-info">
+        <h3>Mountain View</h3>
+        <span class="tag">Landscape</span>
+      </div>
+      <div class="overlay"><p>Peaceful mountains under a clear sky.</p></div>
+    </article>
+
+    <article class="card" data-category="landscape">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="Beach">
+      <div class="card-info">
+        <h3>Ocean Beach</h3>
+        <span class="tag">Landscape</span>
+      </div>
+      <div class="overlay"><p>Calm waves and golden sand at sunset.</p></div>
+    </article>
+
+    <article class="card" data-category="landscape">
+      <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=80" alt="Forest">
+      <div class="card-info">
+        <h3>Green Forest</h3>
+        <span class="tag">Landscape</span>
+      </div>
+      <div class="overlay"><p>Tall trees and fresh air in the forest.</p></div>
+    </article>
+
+    <article class="card" data-category="landscape">
+      <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600&q=80" alt="Lake">
+      <div class="card-info">
+        <h3>Quiet Lake</h3>
+        <span class="tag">Landscape</span>
+      </div>
+      <div class="overlay"><p>A still lake reflecting the sky.</p></div>
+    </article>
+
+    <!-- PORTRAITS -->
+    <article class="card" data-category="portrait">
+      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80" alt="Portrait">
+      <div class="card-info">
+        <h3>Smiling Girl</h3>
+        <span class="tag">Portrait</span>
+      </div>
+      <div class="overlay"><p>A natural portrait full of character.</p></div>
+    </article>
+
+    <article class="card" data-category="portrait">
+      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=80" alt="Portrait">
+      <div class="card-info">
+        <h3>Man</h3>
+        <span class="tag">Portrait</span>
+      </div>
+      <div class="overlay"><p>Studio portrait with soft lighting.</p></div>
+    </article>
+
+    <article class="card" data-category="portrait">
+      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&q=80" alt="Portrait">
+      <div class="card-info">
+        <h3>Young Woman</h3>
+        <span class="tag">Portrait</span>
+      </div>
+      <div class="overlay"><p>A face that tells a story.</p></div>
+    </article>
+
+    <article class="card" data-category="portrait">
+      <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600&q=80" alt="Portrait">
+      <div class="card-info">
+        <h3>Street Style</h3>
+        <span class="tag">Portrait</span>
+      </div>
+      <div class="overlay"><p>Candid portrait taken on the street.</p></div>
+    </article>
+
+    <!-- ARCHITECTURE -->
+    <article class="card" data-category="architecture">
+      <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=600&q=80" alt="Building">
+      <div class="card-info">
+        <h3>City Tower</h3>
+        <span class="tag">Architecture</span>
+      </div>
+      <div class="overlay"><p>Modern white building in the city centre.</p></div>
+    </article>
+
+    <article class="card" data-category="architecture">
+      <img src="https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?w=600&q=80" alt="Building">
+      <div class="card-info">
+        <h3>Morden Building</h3>
+        <span class="tag">Architecture</span>
+      </div>
+      <div class="overlay"><p>Morden Building with beautiful details.</p></div>
+    </article>
+
+    <article class="card" data-category="architecture">
+      <img src="https://images.unsplash.com/photo-1449034446853-66c86144b0ad?w=600&q=80" alt="Building">
+      <div class="card-info">
+        <h3>Bridge View</h3>
+        <span class="tag">Architecture</span>
+      </div>
+      <div class="overlay"><p>A strong bridge crossing the river.</p></div>
+    </article>
+
+    <article class="card" data-category="architecture">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Building">
+      <div class="card-info">
+        <h3>Modern House</h3>
+        <span class="tag">Architecture</span>
+      </div>
+      <div class="overlay"><p>Clean design and large windows.</p></div>
+    </article>
+
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.card');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.classList.remove('hide');
+          } else {
+            card.classList.add('hide');
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
